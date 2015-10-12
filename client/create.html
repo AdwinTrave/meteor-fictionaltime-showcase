@@ -1,0 +1,110 @@
+<template name="create">
+  <div id="editTime" class="uk-modal">
+    <div class="uk-modal-dialog">
+      <a class="uk-modal-close uk-close"></a>
+      <div class="uk-modal-header">
+        {{#if editTime}}
+          Edit time
+        {{else}}
+          Create a new fictional time
+        {{/if}}
+      </div>
+      {{#if editTime}}
+      {{else}}
+      <p>
+        Here you can create your own fictional time. Please read carefully the following paragraphs before you start creating.
+      </p>
+      <p>
+        Currently at v0.1 this tool is limited and is only capable of creating symetric times. This means you won't be able to recreate the Mayan calendar or the Gregorian. At this moment this tool expects that all the times are always the same, eg. months have always 30 days no exceptions and so on. We will address this in later versions, but till then this tool is more suited for creating primarily sci-fi based times.
+      </p>
+      {{/if}}
+      <div class="uk-form-controls uk-form-controls-text">
+        <form class="uk-form" id="editTimeForm">
+          <fieldset data-uk-margin>
+            <legend>Basics</legend>
+            <div class="uk-form-row">
+              <label for="tName">Time name</label>
+              <div class="uk-form-controls">
+                <input id="tName" name="name" type="text" placeholder="Time name" required>
+              </div>
+            </div>
+
+            <div class="uk-form-row">
+              <label for="tDescription">Description</label>
+              <div class="uk-form-controls">
+                <textarea id="tDescription" name="description" rows="8" cols="40"></textarea>
+              </div>
+            </div>
+          </fieldset>
+
+          <!--
+          <fieldset>
+            <legend>Time beginning</legend>
+            <div class="uk-form-row">
+              <label for="connectedToET">Does your time have a starting Earth Time date?</label>
+              <div class="uk-form-controls">
+                <input type="checkbox" name="connectedToET" id="connectedToET" value="yes" data-action="connectedToET" required>
+              </div>
+            </div>
+            <div class="uk-form-row">
+              <label for="tName">Beginning date (midnight GMT)</label>
+              <div class="uk-form-controls">
+                <input type="text" id="startDate" name="startDate" data-uk-datepicker="{format:'DD.MM.YYYY'}">
+              </div>
+            </div>
+          </fieldset>
+        -->
+
+          <fieldset>
+            <legend>Time declaration</legend>
+            <div class="uk-form-row">
+              <label>Where should the time unit be declared</label>
+              <div class="uk-form-controls">
+                <input type="radio" name="declarationLocation" value="before" id="declarationBefore" checked="checked"><label for="declarationBefore">Before</label>
+                <input type="radio" name="declarationLocation" value="after" id="declarationAfter"><label for="declarationAfter">After</label>
+                <!--<input type="radio" name="declarationLocation" value="both" id="declarationBoth"><label for="declarationBoth">Both</label>-->
+                <input type="radio" name="declarationLocation" value="none" id="declarationNone"><label for="declarationNone">None</label>
+              </div>
+              <div class="uk-form-controls">
+                <input id="declarator" class="declarator" type="text" placeholder="SUT" required>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Time definition</legend>
+            <div class="uk-form-row">
+              <label>Hom many milliseconds is the initial unit (1 second = 1000 milliseconds)</label>
+              <div class="uk-form-controls">
+                <input id="unit-0" class="unit" type="number" step="1" min="1" value="1000" required>
+              </div>
+            </div>
+
+            <div class="uk-form-row">
+              <label>First separator</label>
+              <div class="uk-form-controls">
+                <input id="separator-0" class="separator" type="text" value=":" max="3" required>
+              </div>
+            </div>
+
+            <div class="uk-form-row">
+              <label>Second unit (how many of the first unit are in this unit)</label>
+              <div class="uk-form-controls">
+                <input id="unit-1" class="unit" type="number" step="1" min="1" value="100" required>
+              </div>
+            </div>
+
+            <hr />
+            <a href="#" id="addUnit" data-action="addUnit" class="uk-button uk-button-primary">Add a unit</a>
+            <article id="explanation">
+              <p>
+                The last unit is going to go to infinity and will be treated in the same way we treat years. Don't forget to add space if you want it there. For example space between days and hours.
+              </p>
+            </article>
+          </fieldset>
+          <button class="uk-button uk-button-primary" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>

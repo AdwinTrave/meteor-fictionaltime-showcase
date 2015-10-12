@@ -1,0 +1,13 @@
+<template name="view">
+  <div class="uk-flex uk-flex-middle uk-flex-space-between uk-flex-wrap">
+    {{#each fictionalTimes}}
+    <div class="uk-panel uk-panel-header uk-panel-box uk-panel-box-secondary uk-width-1-6">
+      <h3 class="uk-panel-title">{{name}}</h3>
+      <p>
+        {{description}}
+      </p>
+      <button class="uk-button uk-width-1-1 uk-button-primary" data-action="timeDetails">Details</button>
+    </div>
+    {{/each}}
+  </div>
+</template>

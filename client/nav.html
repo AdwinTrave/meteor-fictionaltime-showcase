@@ -1,0 +1,41 @@
+<template name="nav">
+  <nav class="uk-navbar uk-navbar-attached">
+    <a href="/" class="uk-navbar-brand">Fictional Time</a>
+    <ul class="uk-navbar-nav">
+      <li class="{{currentPage home}}"><a href="/" data-action="allTimes">All times</a></li>
+      <li><a href="#aboutModal" data-uk-modal="{center:true}">About</a></li>
+      {{#if currentUser}}
+      {{else}}
+      <li>
+        <!-- fix this into something more usable -->
+        {{> loginButtons}}
+      </li>
+      {{/if}}
+    </ul>
+
+    <div class="uk-navbar-flip">
+      <ul class="uk-navbar-nav">
+        {{#if currentUser}}
+        <li>
+          <!-- fix this into something more usable -->
+          {{> loginButtons}}
+        </li>
+        <li class="{{currentPage userTimes}}"><a href="/user/{{currentUser}}" data-action="userTimes">Your times</a></li>
+        <li><a href="#editTime" data-uk-modal data-action="create">Create a time</a></li>
+        {{/if}}
+      </ul>
+    </div>
+  </nav>
+
+  <div id="aboutModal" class="uk-modal">
+    <div class="uk-modal-dialog">
+      <a class="uk-modal-close uk-close"></a>
+      <div class="uk-modal-header">About this project</div>
+      Author: <a href="http://www.jandvorak.me">Jan Dvorak IV.</a>
+      <a href="https://github.com/AdwinTrave/meteor-fictionaltime/">Github</a>
+      <div class="uk-modal-footer uk-text-right">
+        <button type="button" class="uk-modal-close uk-button">Close</button>
+      </div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,40 @@
+<head>
+  <title>Fictional Time</title>
+  <meta name="description" content="A Meteor.js package to create your own fictional time.">
+</head>
+
+<template name="mainLayout">
+  {{> nav}}
+  <div class="uk-grid">
+    <div class="uk-width-1-1">
+      <div class="uk-block uk-block-large uk-block-primary">
+        <div class="uk-container">
+          {{> Template.dynamic template=top}}
+        </div>
+      </div>
+    </div>
+    <div class="uk-width-1-1">
+      <div class="uk-container">
+        {{> Template.dynamic template=area}}
+      </div>
+    </div>
+  </div>
+  {{> create}}
+</template>
+
+<template name="main">
+  <h1 class="uk-heading-large">Fictional Time</h1>
+  <h2>Create your own fictional time and have fun!</h2>
+</template>
+
+<template name="detailLayout">
+  {{> nav}}
+  <div class="uk-grid">
+    <div class="uk-width-1-1">
+      <div class="uk-container">
+        {{> Template.dynamic template=area}}
+      </div>
+    </div>
+  </div>
+  {{> create}}
+</template>
