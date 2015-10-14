@@ -1,6 +1,6 @@
 //methods for fictional time collection
 Meteor.methods({
-  saveTime:function(timeObj){
+  saveTime: function(timeObj){
     //add current users
     if(Meteor.userId())
     {
@@ -20,6 +20,24 @@ Meteor.methods({
       console.log(timeObj);
       console.log(timeObj.getValidationErrors());
       return timeObj.getValidationErrors();
+    }
+  },
+  deleteTime: function(timeId) {
+    var time = FictionalTimeCollection.findOne({_id: timeId});
+    if(Meteor.userId() === time.user)
+    {
+      console.log("Correct");
+      time.remove(function(err, count){
+        console.log("Removing a time. " + count);
+        if(count === 1){
+          return true;
+        } else {
+          return false;
+          console.log("Error while removing time: " + err);
+        }
+      });
+    } else {
+      return false;
     }
   }
 });

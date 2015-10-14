@@ -1,6 +1,17 @@
+//TODO figure out how to do editing nicely
 Template.create.helpers({
-  fTime: function(){
+  unitsAndSeparators: function(){
+    var insert = "";
+    if( FlowRouter.getRouteName() === "timeDetails" ){
+      //we are on a specific time, so get the time details
+      var time = FictionalTimeCollection.findOne({_id: FlowRouter.getParam("timeId")});
+      var totalLength = time.units.length;
 
+    } else {
+      //create the intial units and dividers
+    }
+    //insert the units and separators into the right place, ie. return
+    return insert;
   }
 });
 
@@ -116,11 +127,14 @@ Template.create.events({
       event.target.reset();
 
       //close the modal
-      //TODO seems to not work
-      var modal = UIkit.modal(".editTime")
+      var modal = UIkit.modal("#editTime");
       modal.hide();
 
       //TODO show a confirmation message
     }
+  },
+  //TODO removing of units
+  "click [data-action='removeUnit']": function(){
+    //minimum is 2 units
   }
 });

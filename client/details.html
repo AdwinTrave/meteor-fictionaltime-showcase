@@ -1,11 +1,22 @@
 <template name="timeDesc">
   {{#with time}}
   <h1>{{name}}</h1>
+  <h2>by <a href="/user/{{user}}">{{username}}</a></h2>
   <p>
     {{description}}
   </p>
   {{/with}}
+  {{#if owner}}
+  <button class="uk-button uk-button-danger" data-action="deleteTime">Delete</button>
+  {{/if}}
 </template>
 
 <template name="time">
+  <h3>This time's code:</h3>
+  <code>{{jsonCode}}</code>
+  <h3>Clocks:</h3>
+  <p>
+    You have been on this page for: <span id="sincePageEntry"></span>
+  </p>
+  
 </template>

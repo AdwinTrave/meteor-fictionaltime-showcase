@@ -22,6 +22,15 @@ Template.view.helpers({
       //home page
       return FictionalTimeCollection.find();
     }
+  },
+  shortenTo: function(text, limit){
+    if(text.length > limit){
+      var result = text.substring(0, limit);
+      //add "..."
+      return result + '...';
+    } else {
+      return text;
+    }
   }
 });
 
